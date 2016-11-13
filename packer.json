@@ -11,6 +11,10 @@
     ],
     "provisioners": [
       {
+        "type": "shell-local",
+        "command": "librarian-puppet install"
+      },
+      {
         "type": "shell",
         "inline": [
           "sudo apt-get -y install puppet"
@@ -18,7 +22,10 @@
       },
       {
         "type": "puppet-masterless",
-        "manifest_file": "manifests/site.pp"
+        "manifest_file": "manifests/site.pp",
+        "module_paths": [
+          "./modules"
+        ]
       }
     ]
 }
